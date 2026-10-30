@@ -35,11 +35,18 @@ $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <td><?= htmlspecialchars($project['dibuat_pada']) ?></td>
 
             <td>
-                <form action="hapus-project.php" method="post"
-                    onsubmit="return confirm('Yakin ingin menghapus project ini?')">
+                <!-- Tombol Edit -->
+                <a href="edit-project.php?id=<?= (int) $project['id'] ?>">
+                    Edit
+                </a>
+
+                <!-- Tombol Hapus -->
+                <form method="post" action="hapus-project.php"
+                      style="display:inline"
+                      onsubmit="return confirm('Hapus project ini?');">
 
                     <input type="hidden" name="id"
-                        value="<?= $project['id'] ?>">
+                           value="<?= $project['id'] ?>">
 
                     <button type="submit">Hapus</button>
                 </form>
